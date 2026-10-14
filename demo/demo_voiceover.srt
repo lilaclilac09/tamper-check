@@ -1,0 +1,192 @@
+1
+00:00:00,383 --> 00:00:04,076
+In October 2026, Ledger confirmed
+that hardware wallets sold
+
+2
+00:00:04,126 --> 00:00:07,595
+through a reseller in Southeast
+Asia had an extra circuit board
+
+3
+00:00:07,645 --> 00:00:11,735
+hidden inside. It reads the recovery
+phrase during setup and sends it out
+
+4
+00:00:11,785 --> 00:00:15,393
+over a cellular link. Ledger's
+Genuine Check still passes,
+
+5
+00:00:15,443 --> 00:00:19,666
+because the secure chip itself is
+untouched. This is tamper-check:
+
+6
+00:00:19,716 --> 00:00:22,633
+software that looks for the
+physical change instead.
+
+7
+00:00:23,647 --> 00:00:25,459
+The primary signal is weight.
+
+8
+00:00:25,509 --> 00:00:29,774
+On a milligram scale, take at least three
+readings and re-zero between each one.
+
+9
+00:00:29,824 --> 00:00:31,581
+They're averaged and compared with a
+
+10
+00:00:31,631 --> 00:00:33,776
+reference unit from the
+same production batch.
+
+11
+00:00:33,826 --> 00:00:37,897
+The reference weights in this demo are
+example values, not official specs.
+
+12
+00:00:37,947 --> 00:00:41,972
+This unit is within tolerance,
+its center of mass hasn't moved,
+
+13
+00:00:42,022 --> 00:00:46,826
+and it is silent on RF, so the
+verdict is likely genuine, risk zero.
+
+14
+00:00:47,811 --> 00:00:49,872
+Now a blob of glue on one side.
+
+15
+00:00:49,922 --> 00:00:54,144
+It adds a few hundred milligrams,
+which a precision scale easily catches.
+
+16
+00:00:54,194 --> 00:00:58,093
+In the 3D view, green marks
+the expected center of mass,
+
+17
+00:00:58,143 --> 00:01:01,411
+yellow the estimated one, and
+red the region where mass seems
+
+18
+00:01:01,461 --> 00:01:04,856
+to have been added. Center
+of mass is an optional check,
+
+19
+00:01:04,906 --> 00:01:07,436
+measured by tilting the device
+over a pivot with a phone.
+
+20
+00:01:07,486 --> 00:01:11,752
+The verdict is suspicious, and
+a remediation checklist appears.
+
+21
+00:01:12,731 --> 00:01:14,697
+Next, a simulated implant.
+
+22
+00:01:14,747 --> 00:01:18,963
+The device is powered off inside a
+Faraday bag while a radio scanner listens.
+
+23
+00:01:19,013 --> 00:01:22,653
+A Ledger has no cellular radio,
+so any burst in the cellular
+
+24
+00:01:22,703 --> 00:01:26,067
+bands is critical. Here they
+repeat about every thirty seconds,
+
+25
+00:01:26,117 --> 00:01:29,292
+shown as red rings. But
+silence isn't proof:
+
+26
+00:01:29,342 --> 00:01:33,349
+an implant may only transmit
+after setup. Weight plus RF:
+
+27
+00:01:33,399 --> 00:01:36,731
+tampered, do not use, risk one hundred.
+
+28
+00:01:37,723 --> 00:01:39,083
+What about a kitchen scale?
+
+29
+00:01:39,133 --> 00:01:42,405
+With one-gram resolution, the
+same measurement looks fine,
+
+30
+00:01:42,455 --> 00:01:44,750
+and the tool warns that this is demo-only.
+
+31
+00:01:44,800 --> 00:01:47,104
+It cannot catch milligram-level implants.
+
+32
+00:01:48,111 --> 00:01:50,903
+With a milligram scale, the
+extra three hundred milligrams
+
+33
+00:01:50,953 --> 00:01:52,071
+are flagged right away.
+
+34
+00:01:52,121 --> 00:01:55,252
+The verdict and risk score come
+from simple rules you can read.
+
+35
+00:01:55,302 --> 00:01:56,822
+Then follow the checklist:
+
+36
+00:01:56,872 --> 00:01:58,964
+do not enter a seed on this device.
+
+37
+00:01:59,014 --> 00:02:01,567
+Run Genuine Check and
+confirm the firmware,
+
+38
+00:02:01,617 --> 00:02:03,721
+but remember it can't see added boards.
+
+39
+00:02:03,771 --> 00:02:06,496
+If funds were ever on a
+seed from this device,
+
+40
+00:02:06,546 --> 00:02:10,367
+move them to a new wallet bought
+directly from Ledger, with a new seed.
+
+41
+00:02:10,417 --> 00:02:15,518
+Report it, and only then open the device
+to inspect. Weigh before you trust.
