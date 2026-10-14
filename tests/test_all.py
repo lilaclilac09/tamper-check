@@ -14,10 +14,11 @@ def test_weight_rules():
     r=REFERENCE["ledger-nano-x"]["weight_g"]; f=lambda x,**k: score({"model":"ledger-nano-x","scale_readings_g":x,**k})
     assert f([r,r+0.001,r-0.001])["risk"]==0
     assert f([r+0.07]*3)["warnings"][0]["severity"]=="medium"
-    assert f([r+0.3]*3)["warnings"][0]["severity"]=="high"
+    assert f([r+0.2]*3)["warnings"][0]["severity"]=="high"
+    b=f([r+0.3]*3); assert b["warnings"][0]["severity"]=="critical" and b["verdict"]=="TAMPERED - DO NOT USE"
 def test_mg_implant_caught_by_diamond_scale_not_kitchen():
     r=REFERENCE["ledger-flex"]["weight_g"]
-    assert score({"model":"ledger-flex","scale_readings_g":[r+0.3]*3,"scale_resolution_g":0.001})["warnings"][0]["severity"]=="high"
+    assert score({"model":"ledger-flex","scale_readings_g":[r+0.3]*3,"scale_resolution_g":0.001})["warnings"][0]["severity"]=="critical"
     k=score({"model":"ledger-flex","scale_readings_g":[round(r+0.3)]*3,"scale_resolution_g":1})
     assert k["warnings"][0]["severity"]=="ok" and any(w["check"]=="scale_resolution" for w in k["warnings"])
 def test_readings_averaged():

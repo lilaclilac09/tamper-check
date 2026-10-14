@@ -598,14 +598,14 @@
 "expected": {
 "model": "ledger-nano-s-plus",
 "model_name": "Ledger Nano S Plus (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 21.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 21.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -674,14 +674,14 @@
 "expected": {
 "model": "ledger-nano-s-plus",
 "model_name": "Ledger Nano S Plus (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 21.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 21.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -802,14 +802,14 @@
 "expected": {
 "model": "ledger-nano-s-plus",
 "model_name": "Ledger Nano S Plus (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 21.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 21.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -878,14 +878,14 @@
 "expected": {
 "model": "ledger-nano-s-plus",
 "model_name": "Ledger Nano S Plus (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 21.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 21.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -1006,14 +1006,14 @@
 "expected": {
 "model": "ledger-nano-s-plus",
 "model_name": "Ledger Nano S Plus (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 21.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 21.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -1082,14 +1082,14 @@
 "expected": {
 "model": "ledger-nano-s-plus",
 "model_name": "Ledger Nano S Plus (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 21.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 21.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -1215,9 +1215,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 22.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 22.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -1291,9 +1291,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 22.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 22.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -1419,9 +1419,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 22.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 22.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -1495,9 +1495,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 22.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 22.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -1623,9 +1623,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 22.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 22.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -1699,9 +1699,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 22.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 22.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -2701,14 +2701,14 @@
 "expected": {
 "model": "ledger-nano-x",
 "model_name": "Ledger Nano X (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 34.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 34.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -2777,14 +2777,14 @@
 "expected": {
 "model": "ledger-nano-x",
 "model_name": "Ledger Nano X (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 34.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 34.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -2905,14 +2905,14 @@
 "expected": {
 "model": "ledger-nano-x",
 "model_name": "Ledger Nano X (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 34.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 34.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -2981,14 +2981,14 @@
 "expected": {
 "model": "ledger-nano-x",
 "model_name": "Ledger Nano X (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 34.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 34.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -3109,14 +3109,14 @@
 "expected": {
 "model": "ledger-nano-x",
 "model_name": "Ledger Nano X (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 34.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 34.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -3185,14 +3185,14 @@
 "expected": {
 "model": "ledger-nano-x",
 "model_name": "Ledger Nano X (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 34.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 34.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -3318,9 +3318,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 35.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 35.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -3394,9 +3394,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 35.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 35.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -3522,9 +3522,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 35.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 35.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -3598,9 +3598,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 35.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 35.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -3726,9 +3726,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 35.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 35.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -3802,9 +3802,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 35.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 35.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -4804,14 +4804,14 @@
 "expected": {
 "model": "ledger-stax",
 "model_name": "Ledger Stax (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 45.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 45.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -4880,14 +4880,14 @@
 "expected": {
 "model": "ledger-stax",
 "model_name": "Ledger Stax (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 45.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 45.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -5008,14 +5008,14 @@
 "expected": {
 "model": "ledger-stax",
 "model_name": "Ledger Stax (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 45.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 45.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -5084,14 +5084,14 @@
 "expected": {
 "model": "ledger-stax",
 "model_name": "Ledger Stax (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 45.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 45.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -5212,14 +5212,14 @@
 "expected": {
 "model": "ledger-stax",
 "model_name": "Ledger Stax (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 45.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 45.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -5288,14 +5288,14 @@
 "expected": {
 "model": "ledger-stax",
 "model_name": "Ledger Stax (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 45.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 45.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -5421,9 +5421,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 46.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 46.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -5497,9 +5497,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 46.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 46.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -5625,9 +5625,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 46.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 46.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -5701,9 +5701,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 46.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 46.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -5829,9 +5829,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 46.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 46.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -5905,9 +5905,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 46.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 46.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -6907,14 +6907,14 @@
 "expected": {
 "model": "ledger-flex",
 "model_name": "Ledger Flex (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 57.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 57.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -6983,14 +6983,14 @@
 "expected": {
 "model": "ledger-flex",
 "model_name": "Ledger Flex (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 57.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 57.357 g, +0.357 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -7111,14 +7111,14 @@
 "expected": {
 "model": "ledger-flex",
 "model_name": "Ledger Flex (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 57.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 57.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -7187,14 +7187,14 @@
 "expected": {
 "model": "ledger-flex",
 "model_name": "Ledger Flex (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 57.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 57.359 g, +0.359 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -7315,14 +7315,14 @@
 "expected": {
 "model": "ledger-flex",
 "model_name": "Ledger Flex (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 57.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 57.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -7391,14 +7391,14 @@
 "expected": {
 "model": "ledger-flex",
 "model_name": "Ledger Flex (EXAMPLE values)",
-"risk": 55,
-"verdict": "SUSPICIOUS",
+"risk": 65,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 57.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 57.368 g, +0.368 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -7524,9 +7524,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 58.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 58.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -7600,9 +7600,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 58.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 58.207 g, +1.207 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -7728,9 +7728,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 58.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 58.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -7804,9 +7804,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 58.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 58.209 g, +1.209 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -7932,9 +7932,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 58.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 58.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -8008,9 +8008,9 @@
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 5 reading(s) 58.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 5 reading(s) 58.218 g, +1.218 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 },
 {
 "check": "center_of_mass",
@@ -8486,14 +8486,14 @@
 "expected": {
 "model": "ledger-nano-x",
 "model_name": "Ledger Nano X (EXAMPLE values)",
-"risk": 50,
-"verdict": "SUSPICIOUS",
+"risk": 60,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 3 reading(s) 34.300 g, +0.300 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 3 reading(s) 34.300 g, +0.300 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 }
 ],
 "com_mm": null,
@@ -8522,14 +8522,14 @@
 "expected": {
 "model": "ledger-flex",
 "model_name": "Ledger Flex (EXAMPLE values)",
-"risk": 50,
-"verdict": "SUSPICIOUS",
+"risk": 60,
+"verdict": "TAMPERED - DO NOT USE",
 "warnings": [
 {
 "check": "scale_weight",
-"severity": "high",
-"points": 50,
-"message": "PRIMARY: avg of 3 reading(s) 57.300 g, +0.300 g vs reference (tol \u00b10.050 g @ 0.001 g resolution)"
+"severity": "critical",
+"points": 60,
+"message": "PRIMARY: avg of 3 reading(s) 57.300 g, +0.300 g vs reference (tol \u00b10.050 g @ 0.001 g resolution) \u2014 board-sized extra mass (>= 0.300 g)"
 }
 ],
 "com_mm": null,

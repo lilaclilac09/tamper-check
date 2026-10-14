@@ -1,6 +1,7 @@
 // Pure-browser port of tamper_check/engine.py. No network, no storage: everything is computed locally.
 import { REFERENCE, CELL_BANDS_MHZ } from "./reference.js";
 
+export const BOARD_G = 0.3; // extra mass consistent with an added board -> TAMPERED
 const r3 = (v) => Math.round(v * 1000) / 1000;
 const r4 = (v) => Math.round(v * 10000) / 10000;
 const sgn = (v, d) => (v >= 0 ? "+" : "-") + Math.abs(v).toFixed(d);
@@ -68,7 +69,8 @@ export function score(m) {
     const tol = Math.max(ref.weight_tol_g, 2 * res, 2 * spread);
     const d = weight - ref.weight_g;
     const info = `avg of ${readings.length} reading(s) ${weight.toFixed(3)} g, ${sgn(d, 3)} g vs reference (tol ±${tol.toFixed(3)} g @ ${res} g resolution)`;
-    if (Math.abs(d) > 2 * tol) add("scale_weight", "high", 50, "PRIMARY: " + info);
+    if (d >= BOARD_G - 1e-6 && Math.abs(d) > 2 * tol) add("scale_weight", "critical", 60, "PRIMARY: " + info + ` — board-sized extra mass (>= ${BOARD_G.toFixed(3)} g)`);
+    else if (Math.abs(d) > 2 * tol) add("scale_weight", "high", 50, "PRIMARY: " + info);
     else if (Math.abs(d) > tol) add("scale_weight", "medium", 25, "PRIMARY: " + info);
     else add("scale_weight", "ok", 0, "PRIMARY: " + info);
     if (res >= 0.1) add("scale_resolution", "medium", 0, `${res} g scale is DEMO-ONLY: cannot catch mg-level implants. Use a ~0.001 g diamond scale (2 mg repeatability).`);

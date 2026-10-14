@@ -23,7 +23,7 @@ def test_dashboard_e2e(url):
         pg.on("console",lambda m: m.type=="error" and errors.append(m.text)); pg.on("pageerror",lambda e: errors.append(str(e)))
         pg.goto(url); pg.wait_for_function("document.querySelectorAll('#model option').length>0")
         pg.wait_for_selector("#v3d canvas")
-        expect={"Genuine":"LIKELY GENUINE","Glue one side":"SUSPICIOUS","LTE implant":"TAMPERED - DO NOT USE"}
+        expect={"Genuine":"LIKELY GENUINE","Glue one side":"TAMPERED - DO NOT USE","LTE implant":"TAMPERED - DO NOT USE"}
         for btn,v in expect.items():
             pg.click(f'button:has-text("{btn}")'); pg.wait_for_function(f"document.querySelector('#res .v')&&document.querySelector('#res .v').textContent=={v!r}")
             n=pg.locator("#res ol li").count(); assert (n==0) if v=="LIKELY GENUINE" else (n==6)

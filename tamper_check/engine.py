@@ -17,6 +17,8 @@ def estimate_com(samples, base_mm):
         out.append(0.0 if slope==0 else -icpt/slope)
     return tuple(round(v,3) for v in out)
 
+BOARD_G=0.3  # extra mass this large is consistent with an added PCB/eSIM board -> TAMPERED
+
 def com_from_two_scales(left_g,right_g,span_mm=100.0,left2_g=None,right2_g=None):
     """Two-scale balance: rigid ruler across two tared mg scales, supports span_mm apart, wallet laid centred.
     Moment balance about the midpoint: x = (R-L)/(R+L) * span/2 (mm, + = toward the right scale).
@@ -62,7 +64,8 @@ def score(m):
         tol=max(ref["weight_tol_g"],2*res,2*spread)
         d=weight-ref["weight_g"]
         info=f"avg of {len(readings)} reading(s) {weight:.3f} g, {d:+.3f} g vs reference (tol ±{tol:.3f} g @ {res} g resolution)"
-        if abs(d)>2*tol: add("scale_weight","high",50,"PRIMARY: "+info)
+        if d>=BOARD_G-1e-6 and abs(d)>2*tol: add("scale_weight","critical",60,"PRIMARY: "+info+f" — board-sized extra mass (>= {BOARD_G:.3f} g)")
+        elif abs(d)>2*tol: add("scale_weight","high",50,"PRIMARY: "+info)
         elif abs(d)>tol: add("scale_weight","medium",25,"PRIMARY: "+info)
         else: add("scale_weight","ok",0,"PRIMARY: "+info)
         if res>=0.1: add("scale_resolution","medium",0,f"{res} g scale is DEMO-ONLY: cannot catch mg-level implants. Use a ~0.001 g diamond scale (2 mg repeatability).")
