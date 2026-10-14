@@ -36,6 +36,6 @@ def test_dashboard_e2e(url):
         nonbg=pg.evaluate("""()=>{const c=document.querySelector('#v3d canvas');const t=document.createElement('canvas');t.width=c.width;t.height=c.height;const x=t.getContext('2d');x.drawImage(c,0,0);const d=x.getImageData(0,0,t.width,t.height).data;let n=0;for(let i=0;i<d.length;i+=4)if(Math.abs(d[i]-13)+Math.abs(d[i+1]-17)+Math.abs(d[i+2]-23)>30)n++;return n}""")
         assert nonbg>500, nonbg
         assert pg.locator("#hist tr").count()==6
-        assert pg.locator("#commtbl tr.crow").count()>=1 and "UNVERIFIED" in pg.inner_text("#comm")
+        assert pg.locator("#comm").count()==0
         b.close()
     assert not errors, errors
