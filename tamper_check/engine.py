@@ -17,6 +17,20 @@ def estimate_com(samples, base_mm):
         out.append(0.0 if slope==0 else -icpt/slope)
     return tuple(round(v,3) for v in out)
 
+def com_from_two_scales(left_g,right_g,span_mm=100.0,left2_g=None,right2_g=None):
+    """Two-scale balance: rigid ruler across two tared mg scales, supports span_mm apart, wallet laid centred.
+    Moment balance about the midpoint: x = (R-L)/(R+L) * span/2 (mm, + = toward the right scale).
+    x1 = d + p (device CoM offset d plus placement error p). After rotating the wallet 180 deg in place,
+    x2 = -d + p, so d = (x1 - x2)/2 cancels placement error."""
+    def x(L,R):
+        if L is None or R is None or L+R<=0: raise ValueError("left/right readings must be positive")
+        return (R-L)/(R+L)*span_mm/2
+    x1=x(left_g,right_g); out={"method":"two_scale","span_mm":span_mm,"left_g":left_g,"right_g":right_g,"left2_g":left2_g,"right2_g":right2_g,"x1_mm":round(x1,3),"total_g":round(left_g+right_g,4)}
+    if left2_g is not None and right2_g is not None:
+        x2=x(left2_g,right2_g); out.update(x2_mm=round(x2,3),offset_mm=round((x1-x2)/2,3),placement_mm=round((x1+x2)/2,3),flipped=True)
+    else: out.update(offset_mm=round(x1,3),flipped=False)
+    return out
+
 def parse_rf_csv(text):
     """CSV columns: timestamp_s,freq_mhz,rssi_dbm (Flipper/SDR-style export)."""
     rows=[]
@@ -55,13 +69,18 @@ def score(m):
         if len(readings)<3: add("scale_repeat","low",0,"Take >=3 readings (re-zero between) for a reliable average")
         if spread>5*res and spread>0.005: add("scale_repeat","low",0,f"Readings spread {spread:.3f} g: check draft/level/zero")
     else: add("scale_weight","medium",10,"No scale reading: precision weight is the primary check")
-    com=m.get("com_mm")
+    com=m.get("com_mm"); tsc=None
+    t2=m.get("two_scale")
+    if com is None and t2 and t2.get("left_g") is not None and t2.get("right_g") is not None:
+        tsc=com_from_two_scales(t2["left_g"],t2["right_g"],t2.get("span_mm") or 100.0,t2.get("left2_g"),t2.get("right2_g"))
+        com=[tsc["offset_mm"],0.0]
     if com is None and m.get("imu_samples"): com=estimate_com(m["imu_samples"],ref["com_mm"])
     if com is not None:
         sh=math.dist(com,ref["com_mm"])
-        if sh>2*ref["com_tol_mm"]: add("center_of_mass","high",30,f"Center of mass shifted {sh:.2f} mm toward ({com[0]:+.1f},{com[1]:+.1f})")
-        elif sh>ref["com_tol_mm"]: add("center_of_mass","medium",12,f"CoM shift {sh:.2f} mm (tol {ref['com_tol_mm']})")
-        else: add("center_of_mass","ok",0,f"CoM shift {sh:.2f} mm, normal")
+        how=(f" [two scales: x={tsc['offset_mm']:+.2f} mm"+(f", flip-corrected, placement {tsc['placement_mm']:+.2f} mm cancelled" if tsc['flipped'] else ", single placement: rotate 180 deg and re-weigh to cancel placement error")+"]") if tsc else ""
+        if sh>2*ref["com_tol_mm"]: add("center_of_mass","high",30,f"Center of mass shifted {sh:.2f} mm toward ({com[0]:+.1f},{com[1]:+.1f})"+how)
+        elif sh>ref["com_tol_mm"]: add("center_of_mass","medium",12,f"CoM shift {sh:.2f} mm (tol {ref['com_tol_mm']})"+how)
+        else: add("center_of_mass","ok",0,f"CoM shift {sh:.2f} mm, normal"+how)
     rf=m.get("rf_rows")
     if rf is None and m.get("rf_csv"): rf=parse_rf_csv(m["rf_csv"])
     if rf is not None:
@@ -83,4 +102,4 @@ def score(m):
     risk=min(risk,100)
     flagged=risk>=25
     verdict="TAMPERED - DO NOT USE" if risk>=60 else "SUSPICIOUS" if risk>=25 else "LIKELY GENUINE"
-    return {"model":model,"model_name":ref["name"],"risk":risk,"verdict":verdict,"warnings":warnings,"com_mm":com,"weight_g":weight,"remediation":REMEDIATION if flagged else []}
+    return {"model":model,"model_name":ref["name"],"risk":risk,"verdict":verdict,"warnings":warnings,"com_mm":com,"weight_g":weight,"remediation":REMEDIATION if flagged else [],"two_scale":tsc}

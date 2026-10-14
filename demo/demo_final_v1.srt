@@ -1,0 +1,123 @@
+1
+00:00:00,393 --> 00:00:03,443
+Eighty-six to ninety-three
+million dollars, stolen.
+
+2
+00:00:03,817 --> 00:00:05,445
+From over three hundred wallets.
+
+3
+00:00:05,805 --> 00:00:08,068
+One reseller. Seven markets halted.
+
+4
+00:00:08,403 --> 00:00:10,502
+Genuine Check? Still passes.
+
+5
+00:00:10,552 --> 00:00:12,229
+The implant is an extra board.
+
+6
+00:00:12,561 --> 00:00:13,933
+And extra boards have weight.
+
+7
+00:00:15,083 --> 00:00:16,348
+This is tamper-check.
+
+8
+00:00:16,398 --> 00:00:18,174
+Weight is the primary signal:
+
+9
+00:00:18,224 --> 00:00:20,195
+three or more readings
+on a milligram scale,
+
+10
+00:00:20,245 --> 00:00:23,013
+averaged, against a reference
+from the same batch.
+
+11
+00:00:23,063 --> 00:00:24,720
+Reference weights here are examples.
+
+12
+00:00:24,770 --> 00:00:29,650
+This unit is plus seven milligrams.
+Risk zero. Likely genuine.
+
+13
+00:00:30,743 --> 00:00:32,290
+Now, glue on one side.
+
+14
+00:00:32,340 --> 00:00:34,361
+Plus three hundred fifty-nine milligrams.
+
+15
+00:00:34,411 --> 00:00:37,745
+In 3D, green is the
+expected center of mass,
+
+16
+00:00:37,795 --> 00:00:42,219
+yellow the estimate, red the
+suspected added mass. Suspicious.
+
+17
+00:00:43,307 --> 00:00:44,749
+A simulated cellular implant.
+
+18
+00:00:44,799 --> 00:00:48,101
+Powered off in a Faraday bag,
+a Ledger should be silent.
+
+19
+00:00:48,151 --> 00:00:49,704
+It has no cellular radio.
+
+20
+00:00:49,754 --> 00:00:54,894
+Here, bursts every thirty
+seconds, plus 1.2 grams. Tampered.
+
+21
+00:00:54,944 --> 00:00:56,219
+Risk one hundred.
+
+22
+00:00:57,311 --> 00:01:00,907
+On a one-gram kitchen scale, three
+hundred milligrams simply vanish.
+
+23
+00:01:00,957 --> 00:01:03,267
+The tool flags it: demo only.
+
+24
+00:01:04,355 --> 00:01:06,593
+At a thousandth of a gram, it's caught:
+
+25
+00:01:06,643 --> 00:01:10,023
+plus three hundred twelve
+milligrams. Then the checklist.
+
+26
+00:01:10,073 --> 00:01:13,769
+Don't enter a seed. Genuine
+Check can't see added boards.
+
+27
+00:01:13,819 --> 00:01:17,741
+Move funds to a new device bought
+directly from Ledger, with a new seed.
+
+28
+00:01:19,039 --> 00:01:20,261
+Weigh before you trust.

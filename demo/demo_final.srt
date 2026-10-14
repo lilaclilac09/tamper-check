@@ -119,5 +119,159 @@ Move funds to a new device bought
 directly from Ledger, with a new seed.
 
 28
-00:01:19,039 --> 00:01:20,261
+00:01:18,940 --> 00:01:21,251
+Weight tells you that mass was added.
+
+29
+00:01:21,301 --> 00:01:22,910
+Two scales tell you where.
+
+30
+00:01:22,960 --> 00:01:27,888
+Step one: lay a rigid ruler across two
+milligram scales, a hundred millimeters
+
+31
+00:01:27,938 --> 00:01:30,823
+apart. Step two:
+tare both, with the ruler on.
+
+32
+00:01:30,873 --> 00:01:34,141
+Step three: lay the wallet in the
+middle. Step four:
+
+33
+00:01:34,191 --> 00:01:35,417
+read left and right.
+
+34
+00:01:35,467 --> 00:01:37,970
+Equal readings mean the mass is centred.
+
+35
+00:01:38,920 --> 00:01:42,860
+The offset is right minus left, over the
+total, times half the span.
+
+36
+00:01:42,910 --> 00:01:44,796
+But you never place it perfectly.
+
+37
+00:01:44,846 --> 00:01:49,021
+So rotate the wallet a hundred eighty
+degrees, in place, and read again.
+
+38
+00:01:49,071 --> 00:01:50,840
+The wallet's offset flips sign.
+
+39
+00:01:50,890 --> 00:01:52,541
+Your placement error doesn't.
+
+40
+00:01:52,591 --> 00:01:56,942
+Half the difference keeps the real
+offset, and cancels the placement error.
+
+41
+00:01:57,890 --> 00:02:02,279
+In the tool, open section three:
+Two scales. The numbers here are
+
+42
+00:02:02,329 --> 00:02:03,576
+simulated examples.
+
+43
+00:02:04,530 --> 00:02:05,922
+Here's a genuine unit.
+
+44
+00:02:05,972 --> 00:02:10,840
+Left and right, then the flipped pair,
+and the span: a hundred millimeters.
+
+45
+00:02:11,790 --> 00:02:14,000
+The tool computes x one and x two.
+
+46
+00:02:14,050 --> 00:02:18,652
+About one millimeter of placement error
+is cancelled. The real offset:
+
+47
+00:02:18,702 --> 00:02:21,244
+minus zero point two eight millimeters.
+
+48
+00:02:22,190 --> 00:02:25,659
+The example tolerance is zero point
+seven millimeters.
+
+49
+00:02:25,709 --> 00:02:28,266
+Inside it, the center of mass is normal.
+
+50
+00:02:28,316 --> 00:02:29,244
+Likely genuine.
+
+51
+00:02:30,190 --> 00:02:31,442
+Now the implant unit.
+
+52
+00:02:31,492 --> 00:02:36,092
+The offset is plus zero point eight five
+millimeters, toward the right end.
+
+53
+00:02:37,040 --> 00:02:40,652
+That's past the tolerance, so the center
+of mass is flagged.
+
+54
+00:02:40,702 --> 00:02:45,230
+Past twice the tolerance, it would be
+high. With one point two extra grams,
+
+55
+00:02:45,280 --> 00:02:46,878
+and radio bursts:
+tampered.
+
+56
+00:02:47,830 --> 00:02:51,384
+In the 3D view, green is the expected
+center of mass.
+
+57
+00:02:51,434 --> 00:02:56,824
+Yellow is the measured one, exaggerated
+five times. Red marks the end where mass
+
+58
+00:02:56,874 --> 00:02:57,980
+was likely added.
+
+59
+00:02:58,930 --> 00:03:03,770
+Until a wallet is verified, keep it in a
+Faraday bag, so an implant can't reach
+
+60
+00:03:03,820 --> 00:03:07,360
+the network. Test the bag:
+put a phone inside and call it.
+
+61
+00:03:07,410 --> 00:03:09,464
+If it rings, the bag doesn't work.
+
+62
+00:03:10,599 --> 00:03:11,821
 Weigh before you trust.

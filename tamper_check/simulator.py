@@ -16,7 +16,15 @@ def rf_log(rng,implant=False,dur=120,period=30):
             for j in range(3): lines.append(f"{t+j*0.2:.1f},{rng.choice([850.0,1842.5,2655.0])},{-52+rng.gauss(0,3):.1f}")
     return "\n".join(lines)
 
-def scenario(model="ledger-flex",kind="genuine",seed=0,res=0.001):
+def two_scale_readings(w,com_x,rng,span=100.0,res=0.001,placement_sd=0.8):
+    """Simulated two-scale balance (EXAMPLE data). Placement error p is shared by both placements;
+    wallet rotated 180 deg in place for the second pair."""
+    p=rng.gauss(0,placement_sd); r=lambda v: round(round(v/res)*res,4); out={"span_mm":span}
+    for sfx,x in (("",com_x+p),("2",-com_x+p+rng.gauss(0,0.03))):
+        R=w*(0.5+x/span); out["left"+sfx+"_g"]=r(w-R+rng.gauss(0,0.0007)); out["right"+sfx+"_g"]=r(R+rng.gauss(0,0.0007))
+    return out
+
+def scenario(model="ledger-flex",kind="genuine",seed=0,res=0.001,method="imu"):
     """kind: genuine | glue (mass added one side) | implant (mass + LTE bursts) | counterfeit (attestation fail)"""
     rng=random.Random(seed); ref=REFERENCE[model]
     w=ref["weight_g"]+rng.gauss(0,0.008); com=[rng.gauss(0,0.2),rng.gauss(0,0.2)]
@@ -27,4 +35,7 @@ def scenario(model="ledger-flex",kind="genuine",seed=0,res=0.001):
         rf= kind=="implant"
     if kind=="counterfeit": att="fail"; src="marketplace"
     reads=[round(round((w+rng.gauss(0,0.001))/res)*res,4) for _ in range(5)]
-    return {"model":model,"scale_readings_g":reads,"scale_resolution_g":res,"imu_samples":imu_samples(com,rng),"rf_csv":rf_log(rng,rf),"attestation":att,"source":src,"label":kind}
+    d={"model":model,"scale_readings_g":reads,"scale_resolution_g":res}
+    if method=="two_scale": d["two_scale"]=two_scale_readings(w,com[0],rng,res=res); d["label"]=kind+" (two-scale)"
+    else: d["imu_samples"]=imu_samples(com,rng)
+    return {**d,"rf_csv":rf_log(rng,rf),"attestation":att,"source":src,"label":d.get("label",kind)}

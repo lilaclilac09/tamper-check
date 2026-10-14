@@ -36,6 +36,16 @@ def test_dashboard_e2e(url):
         nonbg=pg.evaluate("""()=>{const c=document.querySelector('#v3d canvas');const t=document.createElement('canvas');t.width=c.width;t.height=c.height;const x=t.getContext('2d');x.drawImage(c,0,0);const d=x.getImageData(0,0,t.width,t.height).data;let n=0;for(let i=0;i<d.length;i+=4)if(Math.abs(d[i]-13)+Math.abs(d[i+1]-17)+Math.abs(d[i+2]-23)>30)n++;return n}""")
         assert nonbg>500, nonbg
         assert pg.locator("#hist tr").count()==6
+        # two-scale balance section
+        assert pg.locator("#two svg").count()==1
+        pg.click('button:has-text("Genuine (2 scales)")'); pg.wait_for_function("document.querySelector('#res .v').textContent=='LIKELY GENUINE'&&document.querySelector('#res').textContent.includes('two scales')")
+        assert "cancelled" in pg.inner_text("#twox")
+        pg.click('button:has-text("LTE implant (2 scales)")'); pg.wait_for_function("document.querySelector('#res .v').textContent=='TAMPERED - DO NOT USE'&&document.querySelector('#res').textContent.includes('two scales')")
+        pg.fill("#w","57.0, 57.0, 57.0"); pg.fill("#ls","27.36"); pg.fill("#rs","29.64"); pg.fill("#ls2","29.64"); pg.fill("#rs2","27.36"); pg.fill("#span","100")
+        assert "+2.00 mm" in pg.inner_text("#twox")
+        pg.click('button:has-text("Check")'); pg.wait_for_function("document.querySelector('#res').textContent.includes('x=+2.00 mm')")
+        assert pg.locator("#res .v").inner_text()!="LIKELY GENUINE"
+        assert pg.locator("#hist tr").count()==9
         assert pg.locator("#comm").count()==0
         b.close()
     assert not errors, errors
