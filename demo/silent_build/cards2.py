@@ -1,0 +1,10 @@
+exec(open("cards.py").read().split("# card 1")[0])
+def card(title,lines,fn,foot=True):
+    im=Image.new("RGB",(W,H),BG); d=ImageDraw.Draw(im)
+    d.text((W/2,330),"tamper-check",fill=G,font=F(30),anchor="mm")
+    d.text((W/2,440),title,fill=T,font=F(64),anchor="mm")
+    for i,(s,c) in enumerate(lines): d.text((W/2,540+i*56),s,fill=c,font=F(32,False),anchor="mm")
+    im.save(fn)
+card("~$86–93M stolen",[("from 300+ wallets · Ledgers resold with a hidden eSIM board",D),("source: CoinDesk / Cointelegraph, Oct 2026",D)],"hook1.png")
+card("Genuine Check still passes",[("it verifies the chip, not an extra board",D),("but an extra board has weight →",Y)],"hook2.png")
+card("Weigh before you trust.",[("github.com/lilaclilac09/tamper-check",(88,166,255)),("all numbers in this demo are simulated examples",D)],"end.png")

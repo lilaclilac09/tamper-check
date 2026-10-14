@@ -62,7 +62,8 @@ Sample RF logs: `samples/rf_genuine.csv`, `samples/rf_implant.csv`.
 
 ## Demo
 
-- **Final video: `demo/demo_final.mp4`** (~3 min 15 s: stat-card hook, narrated walkthrough, step-by-step two-scale CoM segment with zoom-ins, Faraday-bag tip, end card; burned-in + soft English subtitles, SRT `demo/demo_final.srt`). Previous 84 s cut: `demo/demo_final_v1.mp4`. All numbers are simulated examples.
+- **Final video: `demo/demo_final.mp4`** (94 s, silent, captions only: hook, genuine, LTE implant, glue, kitchen vs milligram scale, checklist, two-scale center of mass with diagram cards, Faraday bag tip, end card; zoom-ins on every typed reading and result; burned-in + soft English captions, `demo/demo_final.srt`). Recorded with `scripts_video_silent.py`, edited with `demo/silent_build/`. Previous narrated 84 s cut: `demo/demo_final_v1.mp4`. All numbers are simulated examples.
+- Zoom frames: `screenshots/zoom/`
 - Two-scale screenshots: `screenshots/two_scale/` (recorded with `scripts_two_scale.py`)
 - Earlier cuts: `demo/demo.mp4` (silent), `demo/demo_voiceover.mp4` (narrated, script `demo/voiceover_script.md`), `demo/demo_subtitled.mp4` (+ subtitles, SRT `demo/demo_voiceover.srt`)
 - Screenshots: `screenshots/genuine.png`, `glue.png`, `implant.png`, `kitchen_scale_demo_only.png`, `manual_diamond_scale_flagged.png`
