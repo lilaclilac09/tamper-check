@@ -1,114 +1,92 @@
 1
-00:00:00,100 --> 00:00:03,400
-Oct 2026: resold Ledgers carried a hidden eSIM board
-that leaked seed phrases.
+00:00:00,050 --> 00:00:02,450
+Oct 2026: Ledgers resold with a hidden eSIM board.
 
 2
-00:00:03,600 --> 00:00:06,900
-Genuine Check can't see it. A milligram scale can.
+00:00:02,550 --> 00:00:04,650
+Seed phrases sent out over the cell network.
 
 3
-00:00:07,100 --> 00:00:09,900
-tamper-check: enter scale readings, get a verdict.
-All numbers are simulated examples.
+00:00:04,750 --> 00:00:07,150
+Genuine Check checks the chip, not extra boards.
 
 4
-00:00:10,100 --> 00:00:13,710
-Weigh 3 times on a 0.001 g scale (re-zero between).
-Type the readings.
+00:00:07,250 --> 00:00:09,650
+So weigh it. Here's how, step by step.
 
 5
-00:00:13,910 --> 00:00:17,210
-Average +0.007 g vs the example reference 57.000 g.
-Inside ±0.050 g → LIKELY GENUINE, risk 0.
+00:00:09,750 --> 00:00:13,450
+STEP 1 · Genuine Ledger Flex. TARE to 0.000 g,
+place it, type the reading.
 
 6
-00:00:17,410 --> 00:00:21,210
-+1.2 g, plus cellular bursts every ~30 s while OFF
-in a Faraday bag → TAMPERED, risk 100.
+00:00:13,550 --> 00:00:15,650
+The scale shows 57.007 g.
 
 7
-00:00:21,410 --> 00:00:24,210
-Red = suspected added mass. Rings = radio bursts.
+00:00:15,750 --> 00:00:25,700
+Each reading goes on the note. Re-tare, weigh 3 times.
 
 8
-00:00:24,410 --> 00:00:28,050
-A reopened, re-glued case: type the readings.
+00:00:25,800 --> 00:00:28,900
+Average 57.007 g vs reference 57.000 g:
+Δ +0.007 g, inside ±0.050 g → LIKELY GENUINE.
 
 9
-00:00:28,250 --> 00:00:31,550
-+0.359 g: over 2× the tolerance.
-Too light for a board, but it was opened → SUSPICIOUS.
+00:00:29,000 --> 00:00:32,350
+Now a tampered unit. Same steps.
 
 10
-00:00:31,750 --> 00:00:34,550
-Green = expected center of mass, yellow = measured.
+00:00:32,450 --> 00:00:34,350
+58.209 g: already heavy.
 
 11
-00:00:34,750 --> 00:00:36,950
-Same tampered unit on a 1 g kitchen scale: 57, 57, 57.
+00:00:34,450 --> 00:00:44,290
+Three readings, all heavy.
 
 12
-00:00:37,150 --> 00:00:40,450
-0.3 g rounds away → missed.
-The tool warns: 1 g scales are demo-only.
+00:00:44,390 --> 00:00:47,690
+Δ +1.209 g: 24× the tolerance.
+Something was added inside → SUSPICIOUS.
 
 13
-00:00:40,650 --> 00:00:44,340
-Same unit on a 0.001 g scale.
+00:00:47,790 --> 00:00:53,020
+STEP 2 · Where is the extra mass? Ruler across two
+mg scales, TARE both, wallet in the middle.
 
 14
-00:00:44,540 --> 00:00:47,340
-+0.312 g caught → SUSPICIOUS, risk 50.
+00:00:53,120 --> 00:00:55,220
+Genuine: L 28.504 = R 28.504.
 
 15
-00:00:47,540 --> 00:00:51,340
-Flagged: don't enter a seed. Move funds to a new
-wallet bought direct from Ledger, with a new seed.
+00:00:55,320 --> 00:00:59,550
+Rotate 180° in place (green edge moves). Read again.
 
 16
-00:00:51,540 --> 00:00:55,840
-Center of mass at home: ruler on two tared mg scales,
-wallet centred, read left (L) and right (R).
+00:00:59,650 --> 00:01:02,550
+Still equal → offset +0.00 mm → CENTRED.
 
 17
-00:00:56,040 --> 00:01:00,840
-Rotate 180° and read again. Half the difference
-cancels your placement error.
+00:01:02,650 --> 00:01:07,830
+Tampered unit on the same setup.
 
 18
-00:01:01,040 --> 00:01:03,330
-Type L and R.
+00:01:07,930 --> 00:01:10,030
+R 29.693 is heavier than L 28.517.
 
 19
-00:01:03,530 --> 00:01:06,140
-Rotate 180°, type the second L and R.
+00:01:10,130 --> 00:01:14,350
+Rotate 180°: now L 29.505 is heavier.
 
 20
-00:01:06,340 --> 00:01:09,140
-Offset −0.28 mm. About 1 mm of placement error cancelled.
+00:01:14,450 --> 00:01:17,750
+The heavy side followed the wallet: extra mass in that end.
+Offset +0.85 mm > 0.7 mm tolerance → OFF-CENTRE.
 
 21
-00:01:09,340 --> 00:01:12,140
-Under the 0.7 mm example tolerance → normal. LIKELY GENUINE.
+00:01:17,850 --> 00:01:20,750
+Until it's verified, keep it in a Faraday bag.
 
 22
-00:01:12,340 --> 00:01:16,970
-Implant unit: both pairs of readings.
-
-23
-00:01:17,170 --> 00:01:19,970
-Offset +0.85 mm toward the right end.
-
-24
-00:01:20,170 --> 00:01:23,470
-Past 0.7 mm → CoM flagged. With +1.2 g → TAMPERED.
-
-25
-00:01:23,670 --> 00:01:26,470
-Yellow dot shifted (×5) toward the red end.
-
-26
-00:01:26,670 --> 00:01:30,970
-Until verified, keep it in a Faraday bag.
-Test the bag: call a phone inside it.
+00:01:20,850 --> 00:01:23,750
+All numbers in this demo are examples.
