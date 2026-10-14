@@ -53,7 +53,7 @@ Sample RF logs: `samples/rf_genuine.csv`, `samples/rf_implant.csv`.
 
 ## Demo
 
-- Video: `demo/demo.mp4` (genuine → glue → implant → scale entry → remediation checklist)
+- Video: `demo/demo.mp4` (genuine → glue → implant → scale entry → remediation checklist); narrated version: `demo/demo_voiceover.mp4` (script: `demo/voiceover_script.md`)
 - Screenshots: `screenshots/genuine.png`, `glue.png`, `implant.png`, `kitchen_scale_demo_only.png`, `manual_diamond_scale_flagged.png`
 - Regenerate with the server running: `python scripts_screenshot.py`, `python scripts_video.py`
 
