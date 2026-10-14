@@ -1,0 +1,92 @@
+1
+00:00:00,050 --> 00:00:02,450
+Oct 2026: Ledgers resold with a hidden eSIM board.
+
+2
+00:00:02,550 --> 00:00:04,650
+Seed phrases sent out over the cell network.
+
+3
+00:00:04,750 --> 00:00:07,150
+Genuine Check checks the chip, not extra boards.
+
+4
+00:00:07,250 --> 00:00:09,650
+So weigh it. Here's how, step by step.
+
+5
+00:00:09,750 --> 00:00:13,450
+STEP 1 · Genuine Ledger Flex. TARE to 0.000 g,
+place it, type the reading.
+
+6
+00:00:13,550 --> 00:00:15,650
+The scale shows 57.007 g.
+
+7
+00:00:15,750 --> 00:00:25,700
+Each reading goes on the note. Re-tare, weigh 3 times.
+
+8
+00:00:25,800 --> 00:00:28,900
+Average 57.007 g vs reference 57.000 g:
+Δ +0.007 g, inside ±0.050 g → LIKELY GENUINE.
+
+9
+00:00:29,000 --> 00:00:32,350
+Now a tampered unit. Same steps.
+
+10
+00:00:32,450 --> 00:00:34,350
+58.209 g: already heavy.
+
+11
+00:00:34,450 --> 00:00:44,290
+Three readings, all heavy.
+
+12
+00:00:44,390 --> 00:00:47,690
+Δ +1.209 g: 24× the tolerance.
+Something was added inside → SUSPICIOUS.
+
+13
+00:00:47,790 --> 00:00:53,020
+STEP 2 · Where is the extra mass? Ruler across two
+mg scales, TARE both, wallet in the middle.
+
+14
+00:00:53,120 --> 00:00:55,220
+Genuine: L 28.504 = R 28.504.
+
+15
+00:00:55,320 --> 00:00:59,550
+Rotate 180° in place (green edge moves). Read again.
+
+16
+00:00:59,650 --> 00:01:02,550
+{\an8}Still equal → offset +0.00 mm → CENTRED.
+
+17
+00:01:02,650 --> 00:01:07,830
+Tampered unit on the same setup.
+
+18
+00:01:07,930 --> 00:01:10,030
+R 29.693 is heavier than L 28.517.
+
+19
+00:01:10,130 --> 00:01:14,350
+Rotate 180°: now L 29.505 is heavier.
+
+20
+00:01:14,450 --> 00:01:17,750
+{\an8}The heavy side followed the wallet: extra mass in that end.
+Offset +0.85 mm > 0.7 mm tolerance → OFF-CENTRE.
+
+21
+00:01:17,850 --> 00:01:20,750
+Until it's verified, keep it in a Faraday bag.
+
+22
+00:01:20,850 --> 00:01:23,750
+All numbers in this demo are examples.
