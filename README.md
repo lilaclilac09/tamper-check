@@ -4,7 +4,7 @@ Software-first tamper triage for Ledger hardware wallets (Nano S Plus, Nano X, S
 
 ## Problem
 
-In October 2026, Ledger confirmed that devices sold through the Southeast Asian reseller CryptoBilis contained an unauthorized hardware implant. According to press reports, the implant reads the 24-word recovery phrase during setup and sends it out over a cellular (eSIM) link. Funds were drained from hundreds of wallets. On Oct 13 Ledger asked resellers in Indonesia, Singapore, Thailand, the Philippines, Vietnam, Malaysia and Hong Kong to pull devices from shelves while it investigates. The secure element is not broken, so **Ledger Genuine Check still passes** on a tampered unit.
+In October 2026, Ledger confirmed that devices sold through the Southeast Asian reseller CryptoBilis contained an unauthorized hardware implant. According to press reports, the implant reads the 24-word recovery phrase during setup and sends it out over a cellular (eSIM) link. On-chain researchers estimate $86–93M was stolen from 300+ wallets (CoinDesk). On Oct 13 Ledger asked resellers in Indonesia, Singapore, Thailand, the Philippines, Vietnam, Malaysia and Hong Kong to pull devices from shelves while it investigates. The secure element is not broken, so **Ledger Genuine Check still passes** on a tampered unit.
 
 - CoinDesk, Oct 12 2026: https://www.coindesk.com/tech/2026/10/12/ledger-says-unauthorized-implant-found-in-at-least-one-device-sold-by-cryptobilis
 - Cointelegraph, Oct 13 2026: https://cointelegraph.com/news/ledger-asks-resellers-to-halt-sales-in-southeast-asia-and-hong-kong
@@ -53,7 +53,8 @@ Sample RF logs: `samples/rf_genuine.csv`, `samples/rf_implant.csv`.
 
 ## Demo
 
-- Video: `demo/demo.mp4` (genuine → glue → implant → scale entry → remediation checklist); narrated version: `demo/demo_voiceover.mp4` (script: `demo/voiceover_script.md`); with English subtitles: `demo/demo_subtitled.mp4` (burned in + soft track; SRT: `demo/demo_voiceover.srt`)
+- **Final video: `demo/demo_final.mp4`** (~84 s: stat-card hook, narrated walkthrough with lower-third numbers, end card; burned-in + soft English subtitles, SRT `demo/demo_final.srt`)
+- Earlier cuts: `demo/demo.mp4` (silent), `demo/demo_voiceover.mp4` (narrated, script `demo/voiceover_script.md`), `demo/demo_subtitled.mp4` (+ subtitles, SRT `demo/demo_voiceover.srt`)
 - Screenshots: `screenshots/genuine.png`, `glue.png`, `implant.png`, `kitchen_scale_demo_only.png`, `manual_diamond_scale_flagged.png`
 - Regenerate with the server running: `python scripts_screenshot.py`, `python scripts_video.py`
 
