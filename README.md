@@ -30,10 +30,10 @@ CoM method: lay device across a pivot at offsets s; tilt ≈ k·(com − s); lea
 6. History table: genuine → glue → implant.
 
 ## Tests
-`pytest -v` — 12 unit/API tests + 1 Playwright end-to-end test (loads dashboard, runs each scenario, checks verdicts & checklist, kitchen-scale warning, 3D canvas actually renders, zero console errors). CI: `.github/workflows/ci.yml`. Needs internet for three.js CDN.
+`pytest -v` — 15 unit/API tests (incl. community dataset & API) + 1 Playwright end-to-end test (loads dashboard, runs each scenario, checks verdicts & checklist, kitchen-scale warning, 3D canvas actually renders, zero console errors). CI: `.github/workflows/ci.yml`. Needs internet for three.js CDN.
 
 ## Screenshots
-`screenshots/genuine.png`, `glue.png`, `implant.png`, `kitchen_scale_demo_only.png`, `manual_diamond_scale_flagged.png`
+`screenshots/genuine.png`, `glue.png`, `implant.png`, `kitchen_scale_demo_only.png`, `manual_diamond_scale_flagged.png`, `community_reports.png`
 
 ## Limitations
 - Example reference values; real tolerances need many genuine units per model/batch.
@@ -41,6 +41,12 @@ CoM method: lay device across a pivot at offsets s; tilt ≈ k·(com − s); lea
 - Flipper Zero's CC1101 covers sub-GHz only (≈300–928 MHz), NOT LTE bands >1 GHz; use an RTL-SDR/HackRF or cheap RF detector. Implants may transmit only after setup/seed entry, so a powered-off scan can miss them.
 - Genuine Check verifies the secure element, not added PCBs — it cannot detect this attack class.
 - NFC check (Stax/Flex) is a stub: only the attestation result is ingested.
+
+## Community reports (X: @ohyishi) — UNVERIFIED
+[@ohyishi](https://x.com/ohyishi) is Yishi, founder of OneKey (bio: "janitor @OneKeyHQ"). After the CryptoBilis incident he invited people to post teardown photos ([post](https://x.com/ohyishi/status/2110209576276828517)) and replied to each one with a verdict ("clean" or suspicious).
+- Raw public data: `data/x_ohyishi/posts.json` (his posts), `replies.json` (others' replies), `media/` (device photos from key cases). Handles only, UTC timestamps, collected 2026-10-14.
+- Curated: `data/x_ohyishi/cases.jsonl` (10 cases, all `verified:false`), served at `GET /api/community?model=&category=` and in the dashboard **Community reports** panel.
+- Per-model **community notes** are shown next to results but **never change reference specs or scores**. Examples: genuine Nano S Plus chips are ST (STM32F042 + ST33K1M5), so ground-off markings are a red flag; official weight specs drift by batch (OneKey 1S Pure measured 19.9 g vs 18.3 g spec, per the vendor because of a housing material change), so calibrate against a same-batch unit; RF timing is unpredictable, so use a Faraday cage.
 
 ## Tampering cases & would tamper-check catch it?
 | Case | Source | Caught? |

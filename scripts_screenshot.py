@@ -8,4 +8,5 @@ with sync_playwright() as p:
     pg.screenshot(path="screenshots/kitchen_scale_demo_only.png",full_page=True)
     pg.fill("#w","57.312, 57.310, 57.313"); pg.select_option("#resol","0.001"); pg.click('button:has-text("Check")'); pg.wait_for_timeout(700)
     pg.screenshot(path="screenshots/manual_diamond_scale_flagged.png",full_page=True)
+    pg.locator("#comm").screenshot(path="screenshots/community_reports.png")
     b.close()

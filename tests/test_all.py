@@ -46,3 +46,20 @@ def test_api():
     assert c.post("/api/check",json={"model":"nope"}).status_code==404
     assert c.post("/api/simulate/ledger-flex/xx").status_code==400
     assert len(c.get("/api/history").json())>=2 and c.get("/").status_code==200
+
+from tamper_check.community import load_cases, notes_for
+def test_cases_dataset_valid():
+    cs=load_cases(); assert len(cs)>=5
+    for c in cs:
+        assert c["verified"] is False and "UNVERIFIED" in c["source"] and c["source_post"].startswith("https://x.com/")
+        for m in c.get("media",[]): assert (__import__("pathlib").Path(m)).exists(), m
+def test_community_notes_do_not_change_specs_or_score():
+    before=dict(REFERENCE["ledger-nano-s-plus"]); n=notes_for("ledger-nano-s-plus")
+    assert REFERENCE["ledger-nano-s-plus"]==before and "UNVERIFIED" in n["label"] and any("ST33K1M5" in x for x in n["notes"])
+    assert any(w["observed_g"]==19.9 for w in n["observed_weights"])
+    s=scenario("ledger-nano-s-plus","genuine",0); assert score(s)["risk"]==0
+def test_api_community():
+    c=TestClient(app); d=c.get("/api/community").json(); assert d["count"]>=5 and "UNVERIFIED" in d["label"]
+    f=c.get("/api/community?model=ledger-flex").json(); assert all("ledger-flex" in x["device_model"] or x["device_model"]=="any" for x in f["cases"]) and f["notes"]["notes"]
+    assert c.get("/api/community?category=spec_drift").json()["count"]==2
+    r=c.post("/api/simulate/ledger-flex/genuine").json(); assert "UNVERIFIED" in r["community"]["label"]
