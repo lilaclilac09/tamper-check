@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset=utf-8><title>tamper-check</title><style>
+body{font-family:system-ui;background:#0e1117;color:#e6e6e6;margin:0;padding:24px}h1{margin:0 0 4px}.sub{color:#888;margin-bottom:16px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:16px;margin-bottom:16px}
+select,input,button{background:#0d1117;color:#eee;border:1px solid #30363d;border-radius:6px;padding:6px 10px;margin:3px}button{cursor:pointer;background:#238636}
+.v{font-size:28px;font-weight:700}.ok{color:#3fb950}.medium,.low{color:#d29922}.high,.critical{color:#f85149}
+.bar{height:14px;background:#30363d;border-radius:7px}.fill{height:14px;border-radius:7px}table{width:100%;border-collapse:collapse}td,th{padding:6px;border-bottom:1px solid #30363d;text-align:left}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}</style></head><body>
+<h1>🔐 tamper-check</h1><div class=sub>Ledger hardware-wallet tamper triage: weight · center of mass · RF in Faraday bag · Genuine Check. Reference values are EXAMPLES — calibrate with a known-good unit.</div>
+<div class=grid><div class=card><b>Simulate</b><br><select id=model></select>
+<button onclick="sim('genuine')">Genuine</button><button onclick="sim('glue')">Glue one side</button><button onclick="sim('implant')">LTE implant</button><button onclick="sim('counterfeit')">Counterfeit</button>
+<hr style="border-color:#30363d"><b>Manual check</b><br>weight g <input id=w size=6> CoM x <input id=cx size=4> y <input id=cy size=4>
+<select id=att><option>pass</option><option>fail</option><option>not_run</option></select><br>RF CSV <input type=file id=rf> <button onclick=manual()>Check</button></div>
+<div class=card id=res><i>Run a check…</i></div></div><div class=card><b>History</b><table id=hist></table></div>
+<script>
+let seed=0;fetch('/api/models').then(r=>r.json()).then(m=>{for(const k in m)model.innerHTML+=`<option value=${k}>${m[k].name}</option>`;model.value='ledger-flex'});
+function show(r){const c=r.risk>=60?'critical':r.risk>=25?'medium':'ok';
+res.innerHTML=`<div>${r.model_name} — <i>${r.label}</i></div><div class="v ${c}">${r.verdict}</div><div>Risk ${r.risk}/100</div><div class=bar><div class="fill" style="width:${r.risk}%;background:${c=='ok'?'#3fb950':c=='medium'?'#d29922':'#f85149'}"></div></div>
+<table>${r.warnings.map(w=>`<tr><td>${w.check}</td><td class=${w.severity}>${w.severity.toUpperCase()}</td><td>${w.message}</td></tr>`).join('')}</table>`;hist_()}
+function sim(k){fetch(`/api/simulate/${model.value}/${k}?seed=${seed++}`,{method:'POST'}).then(r=>r.json()).then(show)}
+async function manual(){const b={model:model.value,attestation:att.value};if(w.value)b.weight_g=+w.value;if(cx.value||cy.value)b.com_mm=[+cx.value||0,+cy.value||0];if(rf.files[0])b.rf_csv=await rf.files[0].text();
+fetch('/api/check',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)}).then(r=>r.json()).then(show)}
+function hist_(){fetch('/api/history').then(r=>r.json()).then(h=>hist.innerHTML='<tr><th>#</th><th>model</th><th>scenario</th><th>risk</th><th>verdict</th></tr>'+h.map(r=>`<tr><td>${r.id}</td><td>${r.model}</td><td>${r.label}</td><td>${r.risk}</td><td class=${r.risk>=60?'critical':r.risk>=25?'medium':'ok'}>${r.verdict}</td></tr>`).join(''))}
+</script></body></html>
