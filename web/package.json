@@ -1,0 +1,8 @@
+{
+  "name": "tamper-check-web",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "vite", "build": "vite build", "test": "vitest run" },
+  "dependencies": { "three": "^0.160.0" },
+  "devDependencies": { "vite": "^5.4.0", "vitest": "^2.1.0" }
+}

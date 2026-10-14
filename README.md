@@ -68,3 +68,14 @@ Sample RF logs: `samples/rf_genuine.csv`, `samples/rf_implant.csv`.
 ## License
 
 MIT
+
+## Web version (browser-only)
+
+`web/` is a static build of the same checks: weight, center of mass (IMU fit or two scales), RF CSV, attestation, provenance and remediation. All of it runs in the browser. There's no server and no uploads, and RF CSV files are read locally. Live at https://check.aileena.xyz.
+
+```bash
+cd web && npm ci && npm run dev    # local
+npm test                           # vitest: parity with the Python engine
+```
+
+`web/test/fixtures.json` holds inputs and the Python `score()` outputs. The JS engine must reproduce the verdict, risk, warnings and messages exactly. To regenerate after changing the Python engine, run `python web/test/gen_fixtures.py` from the repo root.
