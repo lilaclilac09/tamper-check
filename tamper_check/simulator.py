@@ -16,14 +16,15 @@ def rf_log(rng,implant=False,dur=120,period=30):
             for j in range(3): lines.append(f"{t+j*0.2:.1f},{rng.choice([850.0,1842.5,2655.0])},{-52+rng.gauss(0,3):.1f}")
     return "\n".join(lines)
 
-def scenario(model="ledger-flex",kind="genuine",seed=0):
+def scenario(model="ledger-flex",kind="genuine",seed=0,res=0.001):
     """kind: genuine | glue (mass added one side) | implant (mass + LTE bursts) | counterfeit (attestation fail)"""
     rng=random.Random(seed); ref=REFERENCE[model]
-    w=ref["weight_g"]+rng.gauss(0,ref["weight_tol_g"]/4); com=[rng.gauss(0,0.2),rng.gauss(0,0.2)]
+    w=ref["weight_g"]+rng.gauss(0,0.008); com=[rng.gauss(0,0.2),rng.gauss(0,0.2)]
     rf=False; att="pass"; src="direct"
     if kind in("glue","implant"):
-        added=2.5 if kind=="glue" else 3.8; L=ref["dims_mm"][0]
+        added=0.35 if kind=="glue" else 1.2; L=ref["dims_mm"][0]
         off=L*0.35; com[0]=(com[0]*w+off*added)/(w+added); w+=added; src="reseller"
         rf= kind=="implant"
     if kind=="counterfeit": att="fail"; src="marketplace"
-    return {"model":model,"weight_g":round(w,2),"imu_samples":imu_samples(com,rng),"rf_csv":rf_log(rng,rf),"attestation":att,"source":src,"label":kind}
+    reads=[round(round((w+rng.gauss(0,0.001))/res)*res,4) for _ in range(5)]
+    return {"model":model,"scale_readings_g":reads,"scale_resolution_g":res,"imu_samples":imu_samples(com,rng),"rf_csv":rf_log(rng,rf),"attestation":att,"source":src,"label":kind}

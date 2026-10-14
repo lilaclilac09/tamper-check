@@ -8,7 +8,7 @@ from .engine import score
 from .simulator import scenario
 app=FastAPI(title="tamper-check"); HISTORY=[]
 class Measurement(BaseModel):
-    model:str; weight_g:Optional[float]=None; com_mm:Optional[list[float]]=None
+    model:str; weight_g:Optional[float]=None; scale_readings_g:Optional[list[float]]=None; scale_resolution_g:Optional[float]=None; com_mm:Optional[list[float]]=None
     imu_samples:Optional[dict]=None; rf_csv:Optional[str]=None; attestation:Optional[str]=None
     source:Optional[str]=None; seal_broken:bool=False; label:Optional[str]=None
 def run(m):

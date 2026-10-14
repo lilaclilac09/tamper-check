@@ -26,16 +26,35 @@ def parse_rf_csv(text):
 
 def in_cell(f): return any(a<=f<=b for a,b in CELL_BANDS_MHZ)
 
+REMEDIATION=[
+ "STOP: do NOT enter or import any seed phrase on this device; do not set it up.",
+ "Run Ledger Genuine Check in Ledger Live (note: passes even with an added implant).",
+ "Verify firmware version in Ledger Live matches the latest official release.",
+ "If funds are already on a seed generated/entered on this device: move them to a fresh device bought DIRECT from ledger.com, with a NEW seed.",
+ "Report to Ledger Support with purchase source; if funds were stolen, contact police before opening the device.",
+ "Optional: photograph, then open up / visually inspect for extra PCB, eSIM, antenna or glue (voids evidence chain - only after reporting).",
+]
+
 def score(m):
     model=m["model"]; ref=REFERENCE[model]; warnings=[]; risk=0
     def add(check,sev,pts,msg):
         nonlocal risk; risk+=pts; warnings.append({"check":check,"severity":sev,"points":pts,"message":msg})
-    w=m.get("weight_g")
-    if w is not None:
-        d=w-ref["weight_g"]
-        if abs(d)>2*ref["weight_tol_g"]: add("weight","high",35,f"Weight {w:.2f} g is {d:+.2f} g off reference (tol ±{ref['weight_tol_g']} g)")
-        elif abs(d)>ref["weight_tol_g"]: add("weight","medium",15,f"Weight {d:+.2f} g outside tolerance")
-        else: add("weight","ok",0,f"Weight within ±{ref['weight_tol_g']} g")
+    readings=m.get("scale_readings_g") or ([m["weight_g"]] if m.get("weight_g") is not None else [])
+    res=m.get("scale_resolution_g") or 0.001
+    weight=None
+    if readings:
+        weight=sum(readings)/len(readings)
+        spread=max(readings)-min(readings)
+        tol=max(ref["weight_tol_g"],2*res,2*spread)
+        d=weight-ref["weight_g"]
+        info=f"avg of {len(readings)} reading(s) {weight:.3f} g, {d:+.3f} g vs reference (tol ±{tol:.3f} g @ {res} g resolution)"
+        if abs(d)>2*tol: add("scale_weight","high",50,"PRIMARY: "+info)
+        elif abs(d)>tol: add("scale_weight","medium",25,"PRIMARY: "+info)
+        else: add("scale_weight","ok",0,"PRIMARY: "+info)
+        if res>=0.1: add("scale_resolution","medium",0,f"{res} g scale is DEMO-ONLY: cannot catch mg-level implants. Use a ~0.001 g diamond scale (2 mg repeatability).")
+        if len(readings)<3: add("scale_repeat","low",0,"Take >=3 readings (re-zero between) for a reliable average")
+        if spread>5*res and spread>0.005: add("scale_repeat","low",0,f"Readings spread {spread:.3f} g: check draft/level/zero")
+    else: add("scale_weight","medium",10,"No scale reading: precision weight is the primary check")
     com=m.get("com_mm")
     if com is None and m.get("imu_samples"): com=estimate_com(m["imu_samples"],ref["com_mm"])
     if com is not None:
@@ -62,5 +81,6 @@ def score(m):
     if m.get("seal_broken"): add("packaging","medium",10,"Packaging/seal anomaly reported")
     if m.get("source") and m["source"]!="direct": add("provenance","low",5,f"Bought via {m['source']} (not ledger.com direct)")
     risk=min(risk,100)
+    flagged=risk>=25
     verdict="TAMPERED - DO NOT USE" if risk>=60 else "SUSPICIOUS" if risk>=25 else "LIKELY GENUINE"
-    return {"model":model,"model_name":ref["name"],"risk":risk,"verdict":verdict,"warnings":warnings,"com_mm":com}
+    return {"model":model,"model_name":ref["name"],"risk":risk,"verdict":verdict,"warnings":warnings,"com_mm":com,"weight_g":weight,"remediation":REMEDIATION if flagged else []}

@@ -1,23 +1,41 @@
-<!doctype html><html><head><meta charset=utf-8><title>tamper-check</title><style>
+<!doctype html><html><head><meta charset=utf-8><link rel=icon href="data:,"><title>tamper-check</title><style>
 body{font-family:system-ui;background:#0e1117;color:#e6e6e6;margin:0;padding:24px}h1{margin:0 0 4px}.sub{color:#888;margin-bottom:16px}
 .card{background:#161b22;border:1px solid #30363d;border-radius:10px;padding:16px;margin-bottom:16px}
 select,input,button{background:#0d1117;color:#eee;border:1px solid #30363d;border-radius:6px;padding:6px 10px;margin:3px}button{cursor:pointer;background:#238636}
 .v{font-size:28px;font-weight:700}.ok{color:#3fb950}.medium,.low{color:#d29922}.high,.critical{color:#f85149}
 .bar{height:14px;background:#30363d;border-radius:7px}.fill{height:14px;border-radius:7px}table{width:100%;border-collapse:collapse}td,th{padding:6px;border-bottom:1px solid #30363d;text-align:left}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}</style></head><body>
-<h1>🔐 tamper-check</h1><div class=sub>Ledger hardware-wallet tamper triage: weight · center of mass · RF in Faraday bag · Genuine Check. Reference values are EXAMPLES — calibrate with a known-good unit.</div>
+<h1>🔐 tamper-check</h1><div class=sub>Ledger hardware-wallet tamper triage: PRIMARY: precision-scale weight (mg) · optional: center of mass · RF in Faraday bag · Genuine Check. Reference values are EXAMPLES — calibrate with a known-good unit.</div>
 <div class=grid><div class=card><b>Simulate</b><br><select id=model></select>
 <button onclick="sim('genuine')">Genuine</button><button onclick="sim('glue')">Glue one side</button><button onclick="sim('implant')">LTE implant</button><button onclick="sim('counterfeit')">Counterfeit</button>
-<hr style="border-color:#30363d"><b>Manual check</b><br>weight g <input id=w size=6> CoM x <input id=cx size=4> y <input id=cy size=4>
+<hr style="border-color:#30363d"><b>Manual check</b><br><b>1. Precision scale (primary)</b><br>readings g (comma-sep) <input id=w size=22 placeholder="57.002, 57.001, 57.003"> resolution <select id=resol><option value=0.001>0.001 g diamond</option><option value=0.01>0.01 g</option><option value=1>1 g kitchen (demo only)</option></select><br><b>2. Optional advanced</b><br>CoM x <input id=cx size=4> y <input id=cy size=4>
 <select id=att><option>pass</option><option>fail</option><option>not_run</option></select><br>RF CSV <input type=file id=rf> <button onclick=manual()>Check</button></div>
-<div class=card id=res><i>Run a check…</i></div></div><div class=card><b>History</b><table id=hist></table></div>
+<div><div class=card id=res><i>Run a check…</i></div><div class=card><b>3D view</b> <span style="color:#888;font-size:12px">drag to rotate · yellow = est. center of mass (shift ×5) · red = suspected added mass</span><div id=v3d style="height:300px"></div></div></div></div><div class=card><b>History</b><table id=hist></table></div>
 <script>
 let seed=0;fetch('/api/models').then(r=>r.json()).then(m=>{for(const k in m)model.innerHTML+=`<option value=${k}>${m[k].name}</option>`;model.value='ledger-flex'});
-function show(r){const c=r.risk>=60?'critical':r.risk>=25?'medium':'ok';
+function show(r){window.draw3d&&window.draw3d(r);const c=r.risk>=60?'critical':r.risk>=25?'medium':'ok';
 res.innerHTML=`<div>${r.model_name} — <i>${r.label}</i></div><div class="v ${c}">${r.verdict}</div><div>Risk ${r.risk}/100</div><div class=bar><div class="fill" style="width:${r.risk}%;background:${c=='ok'?'#3fb950':c=='medium'?'#d29922':'#f85149'}"></div></div>
-<table>${r.warnings.map(w=>`<tr><td>${w.check}</td><td class=${w.severity}>${w.severity.toUpperCase()}</td><td>${w.message}</td></tr>`).join('')}</table>`;hist_()}
+<table>${r.warnings.map(w=>`<tr><td>${w.check}</td><td class=${w.severity}>${w.severity.toUpperCase()}</td><td>${w.message}</td></tr>`).join('')}</table>${r.remediation.length?`<div style="margin-top:12px;padding:10px;border:1px solid #f85149;border-radius:8px"><b>🤖 Agent remediation checklist</b><ol>${r.remediation.map(x=>`<li><label><input type=checkbox> ${x}</label></li>`).join('')}</ol></div>`:''}`;hist_()}
 function sim(k){fetch(`/api/simulate/${model.value}/${k}?seed=${seed++}`,{method:'POST'}).then(r=>r.json()).then(show)}
-async function manual(){const b={model:model.value,attestation:att.value};if(w.value)b.weight_g=+w.value;if(cx.value||cy.value)b.com_mm=[+cx.value||0,+cy.value||0];if(rf.files[0])b.rf_csv=await rf.files[0].text();
+async function manual(){const b={model:model.value,attestation:att.value};if(w.value)b.scale_readings_g=w.value.split(',').map(Number);b.scale_resolution_g=+resol.value;if(cx.value||cy.value)b.com_mm=[+cx.value||0,+cy.value||0];if(rf.files[0])b.rf_csv=await rf.files[0].text();
 fetch('/api/check',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)}).then(r=>r.json()).then(show)}
 function hist_(){fetch('/api/history').then(r=>r.json()).then(h=>hist.innerHTML='<tr><th>#</th><th>model</th><th>scenario</th><th>risk</th><th>verdict</th></tr>'+h.map(r=>`<tr><td>${r.id}</td><td>${r.model}</td><td>${r.label}</td><td>${r.risk}</td><td class=${r.risk>=60?'critical':r.risk>=25?'medium':'ok'}>${r.verdict}</td></tr>`).join(''))}
+</script>
+<script type=importmap>{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type=module>
+import * as THREE from 'three';import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+const el=document.getElementById('v3d'),R=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});R.setSize(el.clientWidth,300);R.setClearColor(0x0d1117);el.appendChild(R.domElement);
+const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(40,el.clientWidth/300,1,2000);C.position.set(0,90,120);const O=new OrbitControls(C,R.domElement);
+S.add(new THREE.AmbientLight(0xffffff,0.6));const L=new THREE.DirectionalLight(0xffffff,1.2);L.position.set(50,100,80);S.add(L);S.add(new THREE.GridHelper(200,20,0x30363d,0x21262d));
+let G=new THREE.Group();S.add(G);let models={};fetch('/api/models').then(r=>r.json()).then(m=>{models=m;draw3d({model:'ledger-flex',warnings:[],com_mm:[0,0]})});
+window.draw3d=function(r){S.remove(G);G=new THREE.Group();S.add(G);const ref=models[r.model];if(!ref)return;const [x,y,z]=ref.dims_mm;
+ const body=new THREE.Mesh(new THREE.BoxGeometry(x,z,y),new THREE.MeshStandardMaterial({color:0x2b2f36,metalness:0.6,roughness:0.4}));body.position.y=z/2;G.add(body);
+ const scr=new THREE.Mesh(new THREE.PlaneGeometry(x*0.6,y*0.7),new THREE.MeshStandardMaterial({color:0x111111,emissive:0x223344}));scr.rotation.x=-Math.PI/2;scr.position.set(-x*0.1,z+0.05,0);G.add(scr);
+ const com=r.com_mm||[0,0];const flag=r.warnings.some(w=>(w.check=='scale_weight'||w.check=='center_of_mass')&&w.severity!='ok');
+ const m=new THREE.Mesh(new THREE.SphereGeometry(2.2),new THREE.MeshStandardMaterial({color:0xffd33d,emissive:0x664400}));m.position.set(com[0]*5,z+3,com[1]*5);G.add(m);
+ const c0=new THREE.Mesh(new THREE.SphereGeometry(1.2),new THREE.MeshBasicMaterial({color:0x3fb950}));c0.position.set(0,z+3,0);G.add(c0);
+ if(flag){const side=(com[0]>=0?1:-1),hot=new THREE.Mesh(new THREE.BoxGeometry(x*0.25,z*1.05,y*0.9),new THREE.MeshStandardMaterial({color:0xf85149,transparent:true,opacity:0.55,emissive:0x550000}));hot.position.set(side*x*0.36,z/2,0);G.add(hot)}
+ const rf=r.warnings.find(w=>w.check=='rf_emission'&&w.severity=='critical');if(rf){for(let i=1;i<4;i++){const t=new THREE.Mesh(new THREE.TorusGeometry(x*0.3*i,0.4,8,64),new THREE.MeshBasicMaterial({color:0xf85149,transparent:true,opacity:0.6/i}));t.rotation.x=Math.PI/2;t.position.set(x*0.36,z,0);G.add(t)}}
+};
+(function loop(){requestAnimationFrame(loop);G.rotation.y+=0.004;O.update();R.render(S,C)})();
 </script></body></html>

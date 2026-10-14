@@ -2,7 +2,9 @@
 
 Software-first triage for **tampered Ledger hardware wallets** (Nano S Plus, Nano X, Stax, Flex). Built at Paradigm Frontiers 2026 hackathon (Aileen Choo + Aaron Li).
 
-Checks: **weight** vs reference · **center-of-mass shift** (phone IMU tilt over a pivot) · **RF/cellular emission** while OFF inside a Faraday bag (Flipper/SDR CSV) · **Ledger Genuine Check** result · provenance. Explainable rule-based risk score 0–100 → LIKELY GENUINE / SUSPICIOUS / TAMPERED.
+**Primary check: precision-scale weight.** Following Ryan Lackey (@octal)'s suggestion: a ~$100 diamond scale with ~2 mg repeatability (e.g. US Solid DBS46-1, 0.001 g) can catch added implants/glue. Enter ≥3 readings (re-zero between); they are averaged, and tolerance = max(model tol, 2×resolution, 2×spread). A 1 g kitchen scale is flagged **DEMO-ONLY** — it cannot catch mg-level implants. When flagged, the dashboard shows an **agent remediation checklist** (don't enter seed → Genuine Check → verify firmware → move funds to a fresh device bought direct from Ledger with a new seed → report → optional open-up inspection).
+
+Optional advanced checks: **center-of-mass shift** (phone IMU tilt over a pivot) · **RF/cellular emission** while OFF inside a Faraday bag (Flipper/SDR CSV) · **Ledger Genuine Check** result · provenance. Explainable rule-based risk score 0–100 → LIKELY GENUINE / SUSPICIOUS / TAMPERED.
 
 > ⚠️ Reference weights/dims in `tamper_check/reference.py` are **EXAMPLE placeholders, not official Ledger specs**. Calibrate by measuring a unit bought directly from ledger.com.
 
@@ -19,15 +21,19 @@ RF CSV format: `timestamp_s,freq_mhz,rssi_dbm`. Bursts >15 dB above floor in 700
 
 CoM method: lay device across a pivot at offsets s; tilt ≈ k·(com − s); least-squares fit gives com = −intercept/slope per axis.
 
-## Live pitch demo (≈2 min)
-1. "Ledger confirmed implants in devices sold via CryptoBilis; that implant reads the seed off the screen and exfiltrates over LTE — Genuine Check still passes." (screenshot attestation row: OK but warns)
-2. Weigh a real, untouched Ledger on a 0.01 g kitchen scale → enter weight → LIKELY GENUINE.
-3. Put a blob of glue/blu-tack on one side → reweigh, redo phone tilt → SUSPICIOUS (weight + CoM).
-4. Click **LTE implant** simulation (or upload `samples/rf_implant.csv`, as if from Flipper/SDR with device in a Faraday bag) → TAMPERED, periodic cellular bursts.
-5. Show history table: genuine → glue → implant.
+## Live pitch demo (≈2 min) — video: `demo/demo.mp4` (81 s)
+1. "Ledger confirmed implants in devices sold via CryptoBilis; the implant reads the seed off the screen and exfiltrates over LTE — and Genuine Check still passes."
+2. Put an untouched Ledger on the diamond scale, 3 readings → enter → LIKELY GENUINE.
+3. Add a blob of glue on one side → reweigh → SUSPICIOUS, red region on the 3D view, remediation checklist appears; tick through it.
+4. Show the same readings with "1 g kitchen" resolution → DEMO-ONLY warning: why the $100 scale matters.
+5. Click **LTE implant** (or upload `samples/rf_implant.csv`) → TAMPERED: weight + periodic cellular bursts, RF rings in 3D.
+6. History table: genuine → glue → implant.
+
+## Tests
+`pytest -v` — 12 unit/API tests + 1 Playwright end-to-end test (loads dashboard, runs each scenario, checks verdicts & checklist, kitchen-scale warning, 3D canvas actually renders, zero console errors). CI: `.github/workflows/ci.yml`. Needs internet for three.js CDN.
 
 ## Screenshots
-`screenshots/genuine.png`, `screenshots/glue.png`, `screenshots/implant.png`
+`screenshots/genuine.png`, `glue.png`, `implant.png`, `kitchen_scale_demo_only.png`, `manual_diamond_scale_flagged.png`
 
 ## Limitations
 - Example reference values; real tolerances need many genuine units per model/batch.
@@ -35,6 +41,15 @@ CoM method: lay device across a pivot at offsets s; tilt ≈ k·(com − s); lea
 - Flipper Zero's CC1101 covers sub-GHz only (≈300–928 MHz), NOT LTE bands >1 GHz; use an RTL-SDR/HackRF or cheap RF detector. Implants may transmit only after setup/seed entry, so a powered-off scan can miss them.
 - Genuine Check verifies the secure element, not added PCBs — it cannot detect this attack class.
 - NFC check (Stax/Flex) is a stub: only the attestation result is ingested.
+
+## Tampering cases & would tamper-check catch it?
+| Case | Source | Caught? |
+|---|---|---|
+| **CryptoBilis implant, Oct 2026**: extra module with eSIM inside genuine Ledgers sold by a SEA reseller; reads seed from screen, sends over LTE | [CoinDesk](https://www.coindesk.com/tech/2026/10/12/ledger-says-unauthorized-implant-found-in-at-least-one-device-sold-by-cryptobilis), [Cointelegraph](https://cointelegraph.com/news/ledger-asks-resellers-to-halt-sales-in-southeast-asia-and-hong-kong) | **Yes, likely**: module+eSIM+antenna adds mass → diamond-scale weight; LTE bursts if it transmits during an RF scan. Genuine Check alone: **no**. |
+| **Fake Ledgers mailed to 2020-leak victims, 2021**: repackaged Nano X with a USB flash drive soldered on, plus a letter asking for the seed | widely reported (BleepingComputer, Jun 2021; page blocks our fetch, link not verified) | **Yes**: added PCB changes weight; the "enter your seed" letter triggers checklist step 1. |
+| **Saleem Rashid, 2018**: MCU firmware attack on Nano S, could be done in the supply chain with no hardware change | [saleemrashid.com](https://saleemrashid.com/2018/03/20/breaking-ledger-security-model/) | **No** by weight/RF (software-only); Genuine Check + firmware update (since patched) is the defense, which our checklist includes. |
+| **Ledger Connect Kit, Dec 2023**: malicious npm library release drained dApp users | [Ledger](https://www.ledger.com/blog/a-letter-from-ledger-chairman-ceo-pascal-gauthier-regarding-ledger-connect-kit-exploit) | **No**: not a device attack; out of scope. |
+| **2020 customer data leak → phishing**: emails/SMS/fake Ledger Live, "replace your device" | [Ledger](https://www.ledger.com/blog/security-incident-report) | **Partly**: device checks don't apply, but the checklist rule "never enter your seed anywhere" covers the attack. |
 
 ## Briefing: the scene (sources fetched 2026-10-14)
 - **Oct 9 2026**: drained funds traced to Ledgers bought from SEA reseller **CryptoBilis** (MY/ID/PH). Oct 10 Ledger: "one of the impacted users' devices contained an unauthorized hardware implant"; Oct 11: all confirmed cases via CryptoBilis; direct channel not compromised. Est. $86–93M from 300+ wallets (on-chain researchers). — https://www.coindesk.com/tech/2026/10/12/ledger-says-unauthorized-implant-found-in-at-least-one-device-sold-by-cryptobilis
