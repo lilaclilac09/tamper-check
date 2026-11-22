@@ -1,5 +1,7 @@
 # tamper-check
 
+Status: BLOCKED — public deployment verification failed from this environment; next human action: check the TLS/domain configuration at https://check.aileena.xyz and verify the live app. Local tests and simulated examples are not real-device validation.
+
 Software-first tamper triage for Ledger hardware wallets (Nano S Plus, Nano X, Stax, Flex).
 
 ## Problem
@@ -62,7 +64,7 @@ Sample RF logs: `samples/rf_genuine.csv`, `samples/rf_implant.csv`.
 
 ## Demo
 
-- **Final video: `demo/demo_final.mp4`** (94 s, silent, captions only: hook, genuine, LTE implant, glue, kitchen vs milligram scale, checklist, two-scale center of mass with diagram cards, Faraday bag tip, end card; zoom-ins on every typed reading and result; burned-in + soft English captions, `demo/demo_final.srt`). Recorded with `scripts_video_silent.py`, edited with `demo/silent_build/`. Previous narrated 84 s cut: `demo/demo_final_v1.mp4`. All numbers are simulated examples.
+- **Final video: `demo/demo_final.mp4`** (58 s, silent, captions only: hook, genuine, LTE implant, glue, kitchen vs milligram scale, checklist, two-scale center of mass with diagram cards, Faraday bag tip, end card; zoom-ins on every typed reading and result; burned-in + soft English captions, `demo/demo_final.srt`). Recorded with `scripts_video_silent.py`, edited with `demo/silent_build/`. Previous narrated 84 s cut: `demo/demo_final_v1.mp4`. All numbers are simulated examples.
 - Zoom frames: `screenshots/zoom/`
 - Two-scale screenshots: `screenshots/two_scale/` (recorded with `scripts_two_scale.py`)
 - Earlier cuts: `demo/demo.mp4` (silent), `demo/demo_voiceover.mp4` (narrated, script `demo/voiceover_script.md`), `demo/demo_subtitled.mp4` (+ subtitles, SRT `demo/demo_voiceover.srt`)
@@ -82,7 +84,7 @@ MIT
 
 ## Web version (browser-only)
 
-`web/` is a static build of the same checks: weight, center of mass (IMU fit or two scales), RF CSV, attestation, provenance and remediation. All of it runs in the browser. There's no server and no uploads, and RF CSV files are read locally. Live at https://check.aileena.xyz.
+`web/` is a static build of the same checks: weight, center of mass (IMU fit or two scales), RF CSV, attestation, provenance and remediation. All of it runs in the browser. There's no server and no uploads, and RF CSV files are read locally. Public URL: https://check.aileena.xyz (currently unverified from this audit environment; see status above).
 
 ```bash
 cd web && npm ci && npm run dev    # local
